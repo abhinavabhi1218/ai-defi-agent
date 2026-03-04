@@ -1,16 +1,6 @@
 from fastapi import FastAPI
+from backend.routers.price_router import router as price_router
 
 app = FastAPI()
 
-@app.get("/")
-def root():
-    return {"message": "AI DeFi Agent Backend Running"}
-
-@app.get("/analyze")
-def analyze():
-    return {
-        "signal": "BUY",
-        "confidence": 0.75,
-        "reasoning": "Mock EMA crossover detected",
-        "risk_score": 0.32
-    }
+app.include_router(price_router)
